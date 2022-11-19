@@ -5,7 +5,7 @@ from requests import get
 
 
 class DiceBearAvatars:
-	def __init__(self):
+	def __init__(self) -> None:
 		self.api = "https://avatars.dicebear.com/api"
 		self.headers = {
 			"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
@@ -15,7 +15,7 @@ class DiceBearAvatars:
 			self,
 			format: str,
 			content: bytes,
-			location: str = getcwd()):
+			location: str = getcwd()) -> bool:
 		with open(
 			Path(location).joinpath(f"{time() * 1000}.{format}"),
 		mode="wb+",
@@ -30,7 +30,7 @@ class DiceBearAvatars:
 			seed: str,
 			background: str = None,
 			mood: str = "happy",
-			format: str = "svg"):
+			format: str = "svg") -> bool:
 		url = f"{self.api}/{sprite}/{seed}.{format}?mood[]={mood}"
 		if background:
 			url += f"&background={background}"
